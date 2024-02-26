@@ -1,0 +1,47 @@
+{
+    'name': 'Amazon Vendor Central',
+    'version': '17.0',
+    'summary' : 'Integrate & Manage all your Vendor Central operations from Odoo',
+    'description': '''Integrate & Manage all your Vendor Central operations from Odoo.
+
+    ''',
+
+    'author': 'Emipro Technologies',
+    'website': 'http://www.emiprotechnologies.com',
+    'depends': [
+                'stock','product','purchase','sale','delivery',
+                ],
+    'data': [
+            'security/res_groups.xml',
+            'security/ir.model.access.csv',
+            'view/actions.xml',
+            'view/menu.xml',
+            'wizard/view_res_config_vendor_central.xml',
+            'view/view_vendor_ftp_server.xml',
+            'wizard/view_res_config_ftp_server.xml',
+            'wizard/view_import_product_package_info_ept.xml',
+            'report/report_edi_sale_order.xml',
+            'view/ir_sequence_data.xml',
+            'view/view_amazon_vendor_instance.xml',
+            'view/view_stock_warehouse.xml',
+            #'view/view_amazon_edi_message_info.xml',
+            'view/view_avc_logbook.xml',
+            'view/view_sale_order.xml',
+            'view/view_product.xml',
+            # 'view/view_account_invoice.xml',
+            'view/view_res_partner.xml',
+            'view/view_delivery_carrier.xml',
+            'view/view_stock_picking.xml',
+            'view/view_stock_quant.xml',
+            'view/amazon_edi_ir_cron.xml',
+            'view/web_templates.xml',
+            'view/view_stock_move.xml',
+            #'view/view_amazon_sales_report_line.xml',
+            #'view/view_amazon_sales_report.xml',
+            #'view/view_amazon_seller_location_code.xml',
+            'view/view_product_packaging.xml'
+            ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}

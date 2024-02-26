@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record model="ir.ui.view" id="vendor_config_form_inherited">
+      <field name="name">amazon.vendor.instance'.form.inherited</field>
+      <field name="model">amazon.vendor.instance</field>
+      <field name="priority" eval="16"/>
+      <field name="inherit_id" ref="amazon_vendor_central_ept.view_form_amazon_vendor_instance"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='company_id']" position="after">
+          <field name="client" required="1"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="vavc_transaction_log_line_inherited">
+      <field name="name">avc.transaction.log.line.inherited</field>
+      <field name="model">avc.transaction.log.line</field>
+      <field name="inherit_id" ref="amazon_vendor_central_ept.view_form_avc_transaction_log"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='skip_order']" position="after">
+          <field name="ref_li" readonly="1"/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</openerp>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="product_packaging_inherited_view" model='ir.ui.view'>
+			<field name="name">Product Packging</field>
+			<field name="model">product.packaging</field>
+			<field name="inherit_id" ref="product.product_packaging_form_view"/>
+			<field name="arch" type="xml">
+				<field name="qty" position="after">
+					<field name="height"></field>
+					<field name="length"></field>
+					<field name="width"></field>
+				</field>
+			</field>
+		</record>
+	</data>
+</openerp>
+
