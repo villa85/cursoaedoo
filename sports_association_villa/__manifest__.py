@@ -1,0 +1,14 @@
+{
+    'name': 'Sports Association',
+    'summary': 'Manage sports association, teams and events.',
+    'version': '17.0.1.0.0',
+    'category': 'Sports',
+    'author': 'Yuniel Villalón',
+    'license': 'AGPL-3',
+    'application': False,
+    'installable': True,
+    'depends': ['base'],
+    'data': ['security/ir.model.access.csv',
+            'views/sport_issue.xml',
+],
+}
