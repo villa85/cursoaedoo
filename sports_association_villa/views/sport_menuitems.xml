@@ -16,11 +16,24 @@
             />
 
             <menuitem
-            id="menu_sport_issue_tag"
-            name="Sport Issue Tag"
-            action="sports_association_villa.action_sport_issue_tag"
+            id="menu_sport_sport"
+            name="Sport"
+            action="sports_association_villa.action_sport"
             sequence="20"
             />
 
+            <menuitem
+            id="menu_sport_team"
+            name="Sport Team"
+            action="sports_association_villa.action_sport_team"
+            sequence="30"
+            />
+
+            <menuitem
+            id="menu_sport_issue_tag"
+            name="Sport Issue Tag"
+            action="sports_association_villa.action_sport_issue_tag"
+            sequence="40"
+            />
     </menuitem>
 </odoo>

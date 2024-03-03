@@ -10,11 +10,14 @@
     'depends': ['base'],
     'data': [
             'data/sport_licence_data.xml',
+            'data/sport_tag_data.xml',
             'security/groups.xml',
             'security/ir.model.access.csv',
             'views/sport_issue_views.xml',
             'views/sport_clinic_views.xml',
             'views/sport_issue_tag_views.xml',
+            'views/sport_sport_views.xml',
+            'views/sport_team_views.xml',
             'views/sport_menuitems.xml',
 ],
 }
