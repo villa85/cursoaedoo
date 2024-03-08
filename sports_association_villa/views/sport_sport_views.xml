@@ -12,19 +12,6 @@
                 </tree>
             </field>
         </record>
-
-        <!-- Vista para el modelo "sport.sport" -->
-        <!-- <record id="view_sport_form" model="ir.ui.view">
-            <field name="name">sport.sport.form</field>
-            <field name="model">sport.sport</field>
-            <field name="arch" type="xml">
-                <form>
-                    <field name="name"/>
-                    <field name="description"/>
-                </form>
-            </field>
-        </record> -->
-
         <record id="action_sport" model="ir.actions.act_window">
             <field name="name">Add Sport</field>
             <field name="res_model">sport.sport</field>

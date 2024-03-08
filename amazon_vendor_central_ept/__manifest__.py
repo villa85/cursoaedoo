@@ -7,6 +7,7 @@
     ''',
 
     'author': 'Emipro Technologies',
+    'license': 'OPL-1',
     'website': 'http://www.emiprotechnologies.com',
     'depends': [
                 'stock','product','purchase','sale','delivery',

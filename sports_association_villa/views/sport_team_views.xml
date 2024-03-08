@@ -8,6 +8,7 @@
                 <tree string = "Teams">
                     <field name="name"/>
                     <field name="sport_id"/>
+                    <field  string="Player Count"  name="total_players"/>
                 </tree>
             </field>
         </record>
@@ -17,23 +18,35 @@
             <field name="model">sport.team</field>
             <field name="arch" type="xml">
                 <form string = "Team">
+                    <header>
+                        <button string="Starting Player On" name="action_check_starting_player_on" type="object" class="btn-primary"/>
+                        <button string="Starting Player Off" name="action_check_starting_player_off" type="object" class="btn-secondary"/>
+                        <button string="Add Free Players" name="action_add_players" type="object" class="btn-warning"/>
+                    </header>
                     <sheet>
+                            <div class = "oe_title">
+                                <h1>
+                                    <field name="name" placeholder = "Team Name"/>
+                                </h1>
+                            </div>
                             <group>
-                                <field name="name"/>
-                                <field name="sport_id"/>
-                            </group>
-                            <group>
-                                <field name="logo"/>
+                                <group>
+                                    <field name="sport_id"/>
+                                    <field name="total_players"/>
+                                </group>
+                                <group>
+                                    <field name="logo" widget = "image"/>
+                                </group>
                             </group>
                             <notebook>
                                 <page name="players" string="Players">
                                     <field name="players_ids">
-                                        <tree editable = "bottom">
+                                        <tree>
                                             <field name="name"/>
                                             <field name="age"/>
                                             <field name="position"/>
                                             <field name = "team_id"/>
-                                            <field name = "starting_layer"/>
+                                            <field name = "starting_player" widget = "boolean_toggle"/>
                                         </tree>
                                     </field>
                                 </page>
