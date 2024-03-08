@@ -40,15 +40,16 @@
                             </group>
                             <notebook>
                                 <page name="players" string="Players">
-                                    <field name="players_ids">
-                                        <tree>
+                                    <field name="players_ids" context="{'tree_view_ref':'sports_association_villa.view_sport_player_simple_tree'}"></field>
+                                    <!-- <field name="players_ids" context="{'default_position': 'Delantero'}">
+                                        <tree editable = "bottom">
                                             <field name="name"/>
                                             <field name="age"/>
                                             <field name="position"/>
                                             <field name = "team_id"/>
                                             <field name = "starting_player" widget = "boolean_toggle"/>
                                         </tree>
-                                    </field>
+                                    </field> -->
                                 </page>
                             </notebook>
                     </sheet>
