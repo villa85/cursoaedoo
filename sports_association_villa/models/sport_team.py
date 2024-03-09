@@ -10,6 +10,7 @@ class SportTeam(models.Model):
     players_ids = fields.One2many('sport.player', 'team_id', string='Players')
     sport_id = fields.Many2one('sport.sport', string='Sport')
     total_players = fields.Integer('Total Players', compute='_compute_total_players', store=True)
+    color = fields.Integer(string ='Color', default=0)
 
     @api.depends('players_ids')
     def _compute_total_players(self):

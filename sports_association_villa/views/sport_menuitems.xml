@@ -46,6 +46,20 @@
                 action="sports_association_villa.action_sport_player"
                 sequence="20"
                 />
+
+                <menuitem
+                id="menu_sport_league"
+                name="Sport League"
+                action="sports_association_villa.action_sport_league"
+                sequence="30"
+                />
+
+                <menuitem
+                id="menu_sport_match"
+                name="Sport Match"
+                action="sports_association_villa.action_sport_match"
+                sequence="40"
+                />
             </menuitem>
     </menuitem>
 </odoo>
