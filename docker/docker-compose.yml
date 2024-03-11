@@ -1,0 +1,41 @@
+version: "2"
+services:
+    odoo:
+        image: odoo:17
+        platform: linux/amd64
+        container_name: odoo17
+        depends_on:
+            - postgresql
+        links:
+            - wdb:wdb
+        ports:
+            - "8069:8069"
+            - "8072:8072"
+            # - "8888:8888"
+        tty: true
+        stdin_open: true
+        volumes:
+            - ./conf:/etc/odoo
+            - ./addons:/mnt/extra-addons
+            - ../Curso_odoo/cursoaedoo/:/mnt/cursoaedoo
+        environment:
+            - HOST=postgres
+            - WDB_NO_BROWSER_AUTO_OPEN=true
+            - WDB_SOCKET_SERVER=wdb
+            - WDB_WEB_PORT=1984
+            - WDB_WEB_SERVER=localhost
+        restart: always
+    postgresql:
+        image: postgres:16
+        container_name: postgres
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_PASSWORD=odoo
+            - POSTGRES_USER=odoo
+        ports:
+            - "5501:5432"
+    wdb:
+        image: yajo/wdb-server
+        container_name: wdb
+        ports:
+            - "1984:1984"
