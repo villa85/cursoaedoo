@@ -11,6 +11,11 @@ class SportTeam(models.Model):
     sport_id = fields.Many2one('sport.sport', string='Sport')
     total_players = fields.Integer('Total Players', compute='_compute_total_players', store=True)
     color = fields.Integer(string ='Color', default=0)
+    players_count = fields.Integer('Players count', compute='_compute_players_count')
+
+    def _compute_players_count(self):
+        for record in self:
+            record.players_count = len(record.players_ids)
 
     @api.depends('players_ids')
     def _compute_total_players(self):
@@ -34,3 +39,12 @@ class SportTeam(models.Model):
             players = self.env['sport.player'].search([('team_id', '=', False), ('age', '<', 30)])
             players |= record.players_ids
             record.players_ids = [Command.set(players.ids)]
+
+    def action_view_players(self):
+        return {
+            'name': 'Players',
+            'type': 'ir.actions.act_window',
+            'res_model': 'sport.player',
+            'view_mode': 'tree,form',
+            'domain': [('team_id', '=', self.id)],
+        }

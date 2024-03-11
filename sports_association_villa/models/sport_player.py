@@ -12,7 +12,7 @@ class SportPlayer(models.Model):
     age = fields.Integer(string = 'Age', compute='_compute_age', store=True)
     position = fields.Char('Position')
     team_id = fields.Many2one('sport.team', string='Team')
-    starting_player = fields.Boolean(string='Starting Player')
+    starting_player = fields.Boolean(string='Starting Player', default=True)
     sport = fields.Char('Sport', related='team_id.sport_id.name', store=True)
     color = fields.Integer(string ='Color', default=0)
 

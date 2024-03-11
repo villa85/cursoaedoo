@@ -1,5 +1,5 @@
 from odoo import fields, models, api, Command
-
+from odoo.exceptions import ValidationError
 
 class SportIssue(models.Model):
     _name = 'sport.issue'
@@ -7,7 +7,7 @@ class SportIssue(models.Model):
 
     name = fields.Char('Name', required=True)
     description = fields.Text('Description')
-    date = fields.Date('Date')
+    date = fields.Date('Date', default=fields.Date.today())
     assistance = fields.Boolean(string='Assistance', help='Check if the issue has assistance')
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -16,7 +16,7 @@ class SportIssue(models.Model):
         string = 'State',
         default='draft')
 
-    user_id = fields.Many2one('res.users', string='User') # User responsible for the issue, by default the creator of the issue
+    user_id = fields.Many2one('res.users', string='User', default=lambda self: self.env.context.get('user_id', self.env.user.id)) # User responsible for the issue, by default the creator of the issue
     sequense = fields.Integer(string = 'Sequense', default=10)
     solution = fields.Html('Solution')
     clinic_id = fields.Many2one('sport.clinic', string='Clinic')
@@ -25,7 +25,31 @@ class SportIssue(models.Model):
     color = fields.Integer(string ='Color', default=0)
     cost = fields.Float('Cost')
     assigned = fields.Boolean('Assigned', compute='_compute_assigned', inverse='_inverse_assigned', search = '_search_assigned', store=True)
-    user_phone = fields.Char('Phone', related='user_id.partner_id.phone', readonly=True)
+    # user_phone = fields.Char('Phone', related='user_id.partner_id.phone', readonly=True)
+    user_phone = fields.Char('Phone', readonly=True)
+
+    _sql_constraints = [
+                ('name_unique', 'unique(name)', 'The name of the issue must be unique.'),
+            ]
+    @api.onchange('user_id')
+    def _onchange_user_phone(self):
+        for record in self:
+            record.user_phone = record.user_id.partner_id.phone
+
+    @api.onchange('clinic_id')
+    def _onchange_clinic(self):
+        for record in self:
+            if record.clinic_id:
+                record.assistance = True
+            else:
+                record.assistance = False
+
+    @api.constrains('cost')
+    def _check_cost(self):
+        for record in self:
+            if record.cost < 0:
+                raise ValidationError('The cost must be positive')
+
 
     @api.depends('user_id')
     def _compute_assigned(self):
@@ -70,3 +94,10 @@ class SportIssue(models.Model):
                 record.tag_ids = [Command.create({'name': record.name})]
                 # record.tag_ids = [0, 0, ({'name': record.name})]
 
+    # def _cron_remove_unused_tags(self):
+        
+    #     unused_tags = self.env['sport.issue.tag'].search([])
+    #     for tag in unused_tags:
+    #         issue = 
+    #         if not tag.issue_ids:
+    #     unused_tags.unlink()

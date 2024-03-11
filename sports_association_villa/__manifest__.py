@@ -9,6 +9,7 @@
     'installable': True,
     'depends': ['base'],
     'data': [
+            'data/ir_cron.xml',
             'data/sport_licence_data.xml',
             'data/sport_tag_data.xml',
             'security/groups.xml',
