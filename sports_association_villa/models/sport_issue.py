@@ -1,6 +1,7 @@
 from odoo import fields, models, api, Command
 from odoo.exceptions import ValidationError
 
+
 class SportIssue(models.Model):
     _name = 'sport.issue'
     _description = 'Sport Issue'
@@ -83,7 +84,8 @@ class SportIssue(models.Model):
 
     def action_add_tag(self):
         for record in self:
-            # import wdb; wdb.set_trace()
+            import wdb; wdb.set_trace()
+            # import pdb; pdb.set_trace()
             tag_ids = self.env['sport.issue.tag'].search([('name', 'ilike', 'record.name')])
             if tag_ids:
                 # before_tag_ids = record.tag_ids
@@ -95,9 +97,9 @@ class SportIssue(models.Model):
                 # record.tag_ids = [0, 0, ({'name': record.name})]
 
     # def _cron_remove_unused_tags(self):
-        
+
     #     unused_tags = self.env['sport.issue.tag'].search([])
     #     for tag in unused_tags:
-    #         issue = 
+    #         issue =
     #         if not tag.issue_ids:
     #     unused_tags.unlink()

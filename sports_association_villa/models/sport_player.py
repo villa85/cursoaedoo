@@ -1,6 +1,6 @@
 from odoo import fields, models, api
 from datetime import datetime
-import wdb
+
 
 
 class SportPlayer(models.Model):
