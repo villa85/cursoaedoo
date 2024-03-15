@@ -24,7 +24,7 @@
                     <button string="Confirm"  invisible = "state != 'draft'" type="object" name="action_open" class = "btn-primary"/>
                     <button string="To Draf" invisible = "state == 'draft'" type="object" name="action_draft" class = "secondary"/>
                     <button string="Done" invisible = "state == 'done'" type="object" name="action_done" class = "btn-success"/>
-                    <button string="Add Tag" type="object" name="action_add_tag" class = "btn-primary"/>
+                    <button string="Add Tag" type="object" groups ="sports_association_villa.res_groups_sports_association_manager" name="action_add_tag" class = "btn-primary"/>
                 </header>
                 <sheet>
                     <div class = "oe_title">
@@ -41,6 +41,7 @@
                             <field name="cost"/>
                         </group>
                         <group>
+                            <field name="player_id"></field>
                             <field name="date"/>
                             <field name="tag_ids" widget = "many2many_tags" options = "{'no_open': True, 'no_quick_create': True}"/>
                             <field name = "assistance" widget = "boolean_toggle"/>

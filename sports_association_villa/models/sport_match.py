@@ -9,6 +9,7 @@ class SportMatch(models.Model):
     winner_id = fields.Many2one('sport.team', string='Winner', compute='_compute_winner', store=True)
     score_winner = fields.Integer(string='Score Winner', required=False, default=3)
     sport_match_line_ids = fields.One2many('sport.match.line', 'sport_match_id', string='Match Lines')
+    league_id = fields.Many2one('sport.league', string='League')
 
     @api.depends('sport_match_line_ids.score')
     def _compute_winner(self):

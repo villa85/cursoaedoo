@@ -7,8 +7,9 @@
     'license': 'AGPL-3',
     'application': False,
     'installable': True,
-    'depends': ['base'],
+    'depends': ['base','web'],
     'data': [
+            'wizards/sport_create_match.xml',
             'data/ir_cron.xml',
             'data/sport_licence_data.xml',
             'data/sport_tag_data.xml',
@@ -23,5 +24,11 @@
             'views/sport_league_views.xml',
             'views/sport_match_views.xml',
             'views/sport_menuitems.xml',
+            'wizards/sport_create_issue_wizard.xml',
+            'wizards/sport_issue_state.xml',
+
+            'report/sport_issue_report.xml',
+            'report/sport_league_report.xml',
+            'report/sport_match_report.xml',
 ],
 }

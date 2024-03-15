@@ -8,13 +8,14 @@ class SportPlayer(models.Model):
     _description = 'Sport Player'
 
     name = fields.Char('Name', required=True)
-    birtday = fields.Date(string ='Birthday')
-    age = fields.Integer(string = 'Age', compute='_compute_age', store=True)
-    position = fields.Char('Position')
+    birtday = fields.Date(string ='Birthday', copy=False)
+    age = fields.Integer(string = 'Age', compute='_compute_age', store=True, copy=False)
+    position = fields.Char('Position', copy=False)
     team_id = fields.Many2one('sport.team', string='Team')
-    starting_player = fields.Boolean(string='Starting Player', default=True)
+    starting_player = fields.Boolean(string='Starting Player', default=True, copy=False)
     sport = fields.Char('Sport', related='team_id.sport_id.name', store=True)
-    color = fields.Integer(string ='Color', default=0)
+    color = fields.Integer(string ='Color', default=0, copy=False)
+    active = fields.Boolean('Active', default=True)
 
     @api.depends('birtday')
     def _compute_age(self):

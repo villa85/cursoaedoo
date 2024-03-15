@@ -9,6 +9,31 @@ class SportLeague(models.Model):
     end_date = fields.Date(string='End Date', required=False)
     sport_id = fields.Many2one('sport.sport', string='Sport')
     sport_league_ids = fields.One2many('sport.league.line', 'sport_league_id', string='Leagues Lines')
+    match_ids = fields.One2many('sport.match', 'league_id', string='Matches')
+    match_count = fields.Integer(string='Match Count', compute='_compute_match_count', store=True)
+    # _sql_constraints = [
+    #     ('date_check', 'CHECK(begin_date > end_date)', 'Begin date must be less than or equal to end date!')
+    # ]
+
+
+    def _compute_match_count(self):
+        for record in self:
+            record.match_count = len(record.match_ids)
+
+    def action_view_matches(self):
+        return {
+            'name': 'Matches',
+            'type': 'ir.actions.act_window',
+            'res_model': 'sport.match',
+            'view_mode': 'tree,form',
+            'domain': [('league_id', '=', self.id)],
+        }
+
+    @api.constrains('begin_date', 'end_date')
+    def _check_dates(self):
+        for record in self:
+            if record.begin_date > record.end_date:
+                raise models.ValidationError('Begin date must be less than or equal to end date!')
 
     def set_score(self):
         for record in self.sport_league_ids:

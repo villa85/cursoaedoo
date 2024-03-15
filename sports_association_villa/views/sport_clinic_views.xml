@@ -20,6 +20,7 @@
                 <form string = "Clinic">
                     <header>
                         <button string="Check Assistance" name="action_check_assistance" type="object" class="oe_highlight"/>
+                        <button string="Create Issue" name="%(sports_association_villa.action_sport_create_issue_wizard)d" type="action" class="btn-warning"/>
                     </header>
                     <sheet>
                         <div name="button_box" position="inside">

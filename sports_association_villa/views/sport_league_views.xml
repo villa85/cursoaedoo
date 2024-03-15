@@ -20,8 +20,14 @@
                 <form string="Leagues">
                     <header>
                         <button string="Set Score" type="object" name="set_score" class="btn-warning"/>
+                        <button string="Create Mach" name="%(action_sport_create_match)d"  context="{'default_league_id': id}" type="action" class="btn-secondary"/>
                     </header>
                     <sheet>
+                        <div name="button_box" class="oe_button_box">
+                            <button  name="action_view_matches" type="object" class="oe_stat_button" icon = "fa-futbol-o">
+                                <field name="match_count" widget="statinfo" string="Match Count"/>
+                            </button>
+                        </div>
                         <div class="oe_title">
                             <h1>
                                 <field name="name" placeholder="League Name"/>

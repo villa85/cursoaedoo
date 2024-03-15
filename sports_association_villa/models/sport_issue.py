@@ -13,10 +13,10 @@ class SportIssue(models.Model):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('open', 'Open'),
-        ('done', 'Done')], 
+        ('done', 'Done')],
         string = 'State',
         default='draft')
-
+    player_id = fields.Many2one('sport.player', string='Player')
     user_id = fields.Many2one('res.users', string='User', default=lambda self: self.env.context.get('user_id', self.env.user.id)) # User responsible for the issue, by default the creator of the issue
     sequense = fields.Integer(string = 'Sequense', default=10)
     solution = fields.Html('Solution')
@@ -84,7 +84,7 @@ class SportIssue(models.Model):
 
     def action_add_tag(self):
         for record in self:
-            import wdb; wdb.set_trace()
+            # import wdb; wdb.set_trace()
             # import pdb; pdb.set_trace()
             tag_ids = self.env['sport.issue.tag'].search([('name', 'ilike', 'record.name')])
             if tag_ids:
@@ -96,10 +96,9 @@ class SportIssue(models.Model):
                 record.tag_ids = [Command.create({'name': record.name})]
                 # record.tag_ids = [0, 0, ({'name': record.name})]
 
-    # def _cron_remove_unused_tags(self):
-
-    #     unused_tags = self.env['sport.issue.tag'].search([])
-    #     for tag in unused_tags:
-    #         issue =
-    #         if not tag.issue_ids:
-    #     unused_tags.unlink()
+    def _cron_remove_unused_tags(self):
+        tag_ids = self.env['sport.issue.tag'].search([])
+        for tag in tag_ids:
+            issue = self.env['sport.issue'].search([('tag_ids', 'in', tag.id)])
+            if not issue:
+                tag.unlink()
