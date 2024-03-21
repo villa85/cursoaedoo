@@ -23,10 +23,10 @@
             'views/sport_player_views.xml',
             'views/sport_league_views.xml',
             'views/sport_match_views.xml',
+            'views/sport_ticket.xml',
             'views/sport_menuitems.xml',
             'wizards/sport_create_issue_wizard.xml',
             'wizards/sport_issue_state.xml',
-
             'report/sport_issue_report.xml',
             'report/sport_league_report.xml',
             'report/sport_match_report.xml',

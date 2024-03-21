@@ -60,6 +60,13 @@
                 action="sports_association_villa.action_sport_match"
                 sequence="40"
                 />
+
+                <menuitem
+                id="menu_sport_ticket"
+                name="Sport ticket"
+                action="sports_association_villa.action_sport_ticket"
+                sequence="50"
+                />
             </menuitem>
     </menuitem>
 </odoo>
