@@ -7,7 +7,7 @@
     'license': 'AGPL-3',
     'application': False,
     'installable': True,
-    'depends': ['base','web'],
+    'depends': ['base','web', 'portal'],
     'data': [
             'wizards/sport_create_match.xml',
             'data/ir_cron.xml',

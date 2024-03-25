@@ -5,6 +5,7 @@ from odoo.exceptions import ValidationError
 class SportIssue(models.Model):
     _name = 'sport.issue'
     _description = 'Sport Issue'
+    _inherit = ['portal.mixin',  'mail.thread', 'mail.activity.mixin']
 
     name = fields.Char('Name', required=True)
     description = fields.Text('Description')
@@ -15,7 +16,8 @@ class SportIssue(models.Model):
         ('open', 'Open'),
         ('done', 'Done')],
         string = 'State',
-        default='draft')
+        default='draft',
+        tracking=True)
     player_id = fields.Many2one('sport.player', string='Player')
     user_id = fields.Many2one('res.users', string='User', default=lambda self: self.env.context.get('user_id', self.env.user.id)) # User responsible for the issue, by default the creator of the issue
     sequense = fields.Integer(string = 'Sequense', default=10)
