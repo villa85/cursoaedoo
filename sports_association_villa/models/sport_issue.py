@@ -23,7 +23,8 @@ class SportIssue(models.Model):
     sequense = fields.Integer(string = 'Sequense', default=10)
     solution = fields.Html('Solution')
     clinic_id = fields.Many2one('sport.clinic', string='Clinic')
-    tag_ids = fields.Many2many('sport.issue.tag', string='Tags')
+    tag_ids = fields.Many2many('sport.issue.tag', 'sport_issue_tags_rel','issue_id','tag_id', string='Tags')
+
     sport_action_to_do_ids = fields.One2many('sport.action.to.do', 'sport_issue_id', string='Actions to do')
     color = fields.Integer(string ='Color', default=0)
     cost = fields.Float('Cost')

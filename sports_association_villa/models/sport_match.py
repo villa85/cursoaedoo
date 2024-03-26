@@ -3,6 +3,7 @@ from odoo import fields, models, api, Command
 class SportMatch(models.Model):
     _name = 'sport.match'
     _description = 'Sport Match'
+    _inherit = ['portal.mixin',  'mail.thread', 'mail.activity.mixin']
 
     sport_id = fields.Many2one('sport.sport', string='Sport')
     start_date = fields.Datetime(string='Date', required=False)

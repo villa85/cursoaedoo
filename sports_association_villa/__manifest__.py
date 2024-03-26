@@ -13,6 +13,7 @@
             'data/ir_cron.xml',
             'data/sport_licence_data.xml',
             'data/sport_tag_data.xml',
+            'data/ir_sequence_data.xml',
             'security/groups.xml',
             'security/ir.model.access.csv',
             'views/sport_issue_views.xml',

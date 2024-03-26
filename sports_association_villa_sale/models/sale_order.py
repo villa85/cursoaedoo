@@ -10,6 +10,13 @@ class SaleOrder(models.Model):
         self.sport_ticket_ids.unlink()
         return res
 
+    def action_confirm(self):
+        res = super().action_confirm()
+        for order in self:
+            if order.order_line.product_id.is_sport_ticket:
+                order.create_sport_ticket()
+        return res
+
     def create_sport_ticket(self):
         vals = {
             'name': self.name,

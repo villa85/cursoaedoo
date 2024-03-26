@@ -10,7 +10,7 @@ class SportLeague(models.Model):
     sport_id = fields.Many2one('sport.sport', string='Sport')
     sport_league_ids = fields.One2many('sport.league.line', 'sport_league_id', string='Leagues Lines')
     match_ids = fields.One2many('sport.match', 'league_id', string='Matches')
-    match_count = fields.Integer(string='Match Count', compute='_compute_match_count', store=True)
+    match_count = fields.Integer(string='Match Count', compute='_compute_match_count')
     # _sql_constraints = [
     #     ('date_check', 'CHECK(begin_date > end_date)', 'Begin date must be less than or equal to end date!')
     # ]
