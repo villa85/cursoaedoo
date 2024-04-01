@@ -7,7 +7,7 @@
     'license': 'AGPL-3',
     'application': False,
     'installable': True,
-    'depends': ['sports_association_villa','sale_management'],
+    'depends': ['sports_association_villa','sale_management','crm'],
     'data': [
             'views/sport_ticket_views.xml',
             'views/sale_order_views.xml',
