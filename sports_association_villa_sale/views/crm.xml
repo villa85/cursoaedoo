@@ -2,7 +2,7 @@
 <odoo>
 
     <data>
-        <record id="view_crm_lead_form" model="ir.ui.view">
+        <record id="view_crm_lead_quick_form" model="ir.ui.view">
             <field name="name">crm.lead.form</field>
             <field name="model">crm.lead</field>
             <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
@@ -10,6 +10,19 @@
                 <field name="email_from" position="before">
                     <field name="how_you_found_us"/>
                 </field>
+            </field>
+        </record>
+        <record id="view_crm_lead_form" model="ir.ui.view">
+            <field name="name">crm.lead.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='opportunity_partner']/field[@name='partner_phone_update']" position="after">
+                    <label for="how_you_found_us"/>
+                    <div class="o_row">
+                        <field name="how_you_found_us"/>
+                    </div>
+                </xpath>
             </field>
         </record>
     </data>
