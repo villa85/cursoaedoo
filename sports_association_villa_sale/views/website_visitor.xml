@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="website_visitor_contact_form_custom" model="ir.ui.view">
+        <field name="name">website.visitor.contact.form.custom</field>
+        <field name="model">website.visitor</field>
+        <field name="inherit_id" ref="website.website_visitor_view_form"/>
+        <field name="arch" type="xml">
+            <field name="email" position="replace">
+                <field name="email" required="1"/>
+            </field>
+            <field name="mobile" position="attributes">
+                <attribute name="invisible"/>
+            </field>
+            <field name="lang_id" position="replace">
+                <field name="lang_id" invisible="1"/>
+            </field>
+            <field name="page_ids" position="before">
+                <field name="how_you_found_us" required="0"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

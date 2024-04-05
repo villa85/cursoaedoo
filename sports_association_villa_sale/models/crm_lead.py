@@ -1,7 +1,7 @@
 from odoo import fields, models, api, Command
 from odoo.exceptions import ValidationError
 
-class Crm(models.Model):
+class CrmLead(models.Model):
     _inherit = 'crm.lead'
 
     how_you_found_us = fields.Selection([

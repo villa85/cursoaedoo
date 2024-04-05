@@ -10,6 +10,7 @@
     'depends': ['sports_association_villa','sale_management','crm'],
     'data': [
             'views/crm.xml',
+            'views/website_visitor.xml',
             'views/sport_ticket_views.xml',
             'views/sale_order_views.xml',
             'views/product_template_views.xml',
